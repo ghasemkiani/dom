@@ -7,10 +7,15 @@ class DOM extends Obj {
       get window() {
         return this.get();
       },
+      get() {
+        return cutil.global().window;
+      },
+      install() {
+        if (cutil.na(cutil.global().window)) {
+          cutil.global().window = this.window;
+        }
+      },
     });
-  }
-  static get() {
-    return cutil.global().window;
   }
 }
 
